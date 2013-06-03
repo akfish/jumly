@@ -33,7 +33,7 @@ SequenceOccurrence::create = (objsrc) ->
   SequenceParticipant = self.require "SequenceParticipant"
   obj = new SequenceParticipant(objsrc.name)
               .addClass "created-by"
-  @_actor.parent().append obj
+  @append obj
   iact = (@interact obj)
            .addClass("creating")
            .find(".message")

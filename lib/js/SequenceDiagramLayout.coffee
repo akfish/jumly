@@ -23,7 +23,7 @@ SequenceDiagramLayout::_layout = ->
   @generate_lifelines_and_align_horizontally()
   @pack_refs_horizontally()
   @pack_fragments_horizontally()
-  @_q(".create.message").selfEach (e)-> e._to_be_creation()
+  #@_q(".create.message").selfEach (e)-> e._to_be_creation()
   @align_lifelines_vertically()
   @align_lifelines_stop_horizontally()
   @rebuild_asynchronous_self_calling()
