@@ -1,11 +1,9 @@
-#!/usr/bin/env coffee
 express = require "express"
 jade    = require "jade"
 assets  = require "connect-assets"
 stylus  = require "stylus"
 nib     = require "nib"
 fs      = require "fs"
-http    = require 'http'
 domain  = require 'domain'
 
 views_dir  = "#{__dirname}/views"
@@ -68,7 +66,7 @@ require("underscore").extend jade.filters,
     """<script type="text/jumly+#{type}" #{id}>\\n#{js}</script>"""
 
 
-pkg = JSON.parse fs.readFileSync("package.json")
+pkg = JSON.parse fs.readFileSync("#{__dirname}/../../package.json")
 ctx =
   version: pkg.version
   paths:
@@ -80,8 +78,8 @@ ctx =
     coffeescript: pkg.dependencies["coffee-script"]
 
 
-routes = require("./routes") ctx
-api    = require("./routes/api") ctx
+routes = require("#{__dirname}/../../routes") ctx
+api    = require("#{__dirname}/../../routes/api") ctx
 
 app.get "/",               routes.index
 app.get "/reference.html", routes.reference
@@ -94,5 +92,4 @@ app.post "/api/diagrams",  api.diagrams.post
 app.get "/:path([a-z]+)", (req, res)-> res.redirect "/#{req.params.path}.html"
 
 
-http.createServer(app).listen app.get('port'), ->
-  console.log "Express server listening on port #{app.get('port')}"
+module.exports = app
