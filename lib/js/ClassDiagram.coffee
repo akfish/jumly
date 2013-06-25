@@ -1,5 +1,6 @@
 self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
 Diagram = self.require "Diagram"
+ClassElement = self.require "ClassElement"
 utils = self.require "jquery.ext"
 
 class ClassDiagram extends Diagram
@@ -12,7 +13,7 @@ ClassDiagram::member = (kind, clz, normval)->
     holder.append $("<li>").addClass(e).attr("id", id).html e
 
 ClassDiagram::declare = (normval) ->
-  clz = $.jumly ".class", normval
+  clz = new ClassElement normval
   if normval.stereotype
     clz.find(".stereotype").html normval.stereotype
   else
@@ -20,7 +21,7 @@ ClassDiagram::declare = (normval) ->
     
   @member(kind, clz, normval) for kind in ["attr", "method"]
 
-  ref = @_regByRef_ normval.id, clz
+  ref = @_reg_by_ref normval.id, clz
   eval "#{ref} = clz"
   @append clz
 

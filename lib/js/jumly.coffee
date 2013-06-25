@@ -23,6 +23,7 @@
 #= require RobustnessDiagram
 #= require RobustnessDiagramBuilder
 #= require RobustnessDiagramLayout
+#= require ClassElement
 #= require ClassDiagram
 #= require ClassDiagramBuilder
 #= require ClassDiagramLayout

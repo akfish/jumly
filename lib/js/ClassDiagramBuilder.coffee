@@ -9,7 +9,7 @@ class ClassDiagramBuilder extends DiagramBuilder
     @_diagram ?= new ClassDiagram
 
 ClassDiagramBuilder::def = (props)->
-  @diagram.declare core._normalize props
+  @_diagram.declare core._normalize props
 
 if typeof module != 'undefined' and module.exports
   module.exports = ClassDiagramBuilder
