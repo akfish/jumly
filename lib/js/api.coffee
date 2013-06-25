@@ -10,14 +10,19 @@ _t2l =  # type 2 logic
   "text/jumly+robustness":
     builder: "RobustnessDiagramBuilder"
     layout:  "RobustnessDiagramLayout"
+  "text/jumly+class":
+    builder: "ClassDiagramBuilder"
+    layout:  "ClassDiagramLayout"
 
 JUMLY._compile = (code, type = _type)->
   throw "unknown type: #{type}" unless _t2l[type]
-  (new (JUMLY.require _t2l[type].builder)).build code
+  T = JUMLY.require _t2l[type].builder
+  (new T).build code
 
 JUMLY._layout = (doc, type = _type)->
   throw "unknown type: #{type}" unless _t2l[type]
-  (new (JUMLY.require _t2l[type].layout)).layout doc
+  T = JUMLY.require _t2l[type].layout
+  (new T).layout doc
 
 ## returns JUMLY meta object
 _to_meta = ($src)->

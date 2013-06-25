@@ -1,22 +1,18 @@
-DiagramBuilder = require "DiagramBuilder"
+self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
+DiagramBuilder = self.require "DiagramBuilder"
+ClassDiagram = self.require "ClassDiagram"
+core = self.require "core"
 
 class ClassDiagramBuilder extends DiagramBuilder
-  constructor: (@diagram) ->
+  constructor: (@_diagram) ->
+    super()
+    @_diagram ?= new ClassDiagram
 
 ClassDiagramBuilder::def = (props)->
-  @diagram.declare Identity.normalize props
-
-##Deprecated
-ClassDiagramBuilder::start = (acts)-> acts.apply this, []
-
-DSL = ->
-DSL type:".class-diagram", compileScript: (script) ->
-  b = new ClassDiagramBuilder
-  b.build script.html()
-
+  @diagram.declare core._normalize props
 
 if typeof module != 'undefined' and module.exports
   module.exports = ClassDiagramBuilder
 else
-  require("core").ClassDiagramBuilder = ClassDiagramBuilder
+  core.exports ClassDiagramBuilder
 

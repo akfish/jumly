@@ -1,5 +1,6 @@
-Diagram = require "Diagram"
-utils = require "jquery.ext"
+self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
+Diagram = self.require "Diagram"
+utils = self.require "jquery.ext"
 
 class ClassDiagram extends Diagram
 
@@ -40,7 +41,7 @@ ClassDiagram::compose = ->
   this
 
 
-core = require "core"
+core = self.require "core"
 if core.env.is_node
   module.exports = ClassDiagram
 else
