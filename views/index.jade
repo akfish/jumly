@@ -21,6 +21,16 @@ block styles
 block content
   .container
     .row
+      .span10.offset2
+        p Class diagram is coming soon, too.
+        
+        :jumly(type=class)
+          @def
+            myattr:
+              run: {}
+
+  .container
+    .row
       .span2
         #quick-links
           ul.inner
@@ -178,13 +188,6 @@ block content
             @actor "User" :-> @view "Browser"
             @view "Browser" :-> @controller "Server"
             @controller "Server" :-> @entity "Database"
-
-          p Class diagram is coming soon, too.
-          
-          :jumly(type=class)
-            @def
-              myattr:
-                run: {}
 
   #examples
     .container

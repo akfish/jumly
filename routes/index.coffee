@@ -3,3 +3,4 @@ module.exports = (ctx)->
   reference: (req, res)-> res.render "reference", ctx
   api: (req, res)-> res.render "api", ctx
   try: (req, res)-> res.render "try", ctx
+  a: (req, res)-> res.render "a", ctx

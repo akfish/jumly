@@ -84,6 +84,7 @@ routes = require("./routes") ctx
 api    = require("./routes/api") ctx
 
 app.get "/",               routes.index
+app.get "/a",              routes.a
 app.get "/reference.html", routes.reference
 app.get "/api.html",       routes.api
 app.get "/try.html",       routes.try
