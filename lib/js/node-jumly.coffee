@@ -1,4 +1,5 @@
-testSyntax = "@found 'You'"
+testSyntax = "@found 'You', ->
+  @message 'get', 'JUMLY'"
 
 jsEnv = require('jsdom').env
 
@@ -6,6 +7,9 @@ containerDocument = "<html><body><script type='text/jumly+sequence'>#{testSyntax
 jsEnv containerDocument, (errors, window) ->
         core = require "./core"
         api = require "./api"
+
+        # Fix Math.sign undefined
+        relationshipt = require "./Relationship"
         
         global.jQuery = global.$ = require('jquery')(window)
         global.document = window.document

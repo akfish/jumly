@@ -1,4 +1,4 @@
-self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
+self = require: JUMLY.require
 
 HTMLElement = self.require "HTMLElement"
 g2d = self.require "jquery.g2d"
