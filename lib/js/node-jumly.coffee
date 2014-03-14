@@ -5,14 +5,39 @@ jsEnv = require('jsdom').env
 
 containerDocument = "<html><body><script type='text/jumly+sequence'>#{testSyntax}</script></body></html>"
 jsEnv containerDocument, (errors, window) ->
-        core = require "./core"
-        api = require "./api"
-
-        # Fix Math.sign undefined
-        relationshipt = require "./Relationship"
         
+        # jQuery
         global.jQuery = global.$ = require('jquery')(window)
         global.document = window.document
+
+
+        # require all
+        require "./core"
+        require "./jquery.g2d"
+        require "./jquery.ext"
+        require "./HTMLElement"
+        require "./Diagram"
+        require "./DiagramBuilder"
+        require "./DiagramLayout"
+        require "./HTMLElementLayout"
+        require "./NoteElement"
+        require "./Position"
+        require "./Relationship"
+        require "./SequenceLifeline"
+        require "./SequenceMessage"
+        require "./SequenceInteraction"
+        require "./SequenceOccurrence"
+        require "./SequenceParticipant"
+        require "./SequenceFragment"
+        require "./SequenceRef"
+        require "./SequenceDiagram"
+        require "./SequenceDiagramBuilder"
+        require "./SequenceDiagramLayout"
+        require "./IconElement"
+        require "./RobustnessDiagram"
+        require "./RobustnessDiagramBuilder"
+        require "./RobustnessDiagramLayout"
+        require "./api"
 
         JUMLY.scan()
         # jQuery hack to get outerHtml
