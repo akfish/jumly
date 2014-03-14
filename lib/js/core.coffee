@@ -61,7 +61,8 @@ self = {}
 if core.env.is_node
   global.JUMLY = JUMLY
   module.exports = core
-  self.require = JUMLY.require = require
+  self.require = JUMLY.require = (m) ->
+    require "./#{m}"
 else
   window.JUMLY = JUMLY
 
