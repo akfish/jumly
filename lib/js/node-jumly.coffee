@@ -1,13 +1,21 @@
-testSyntax = "@found 'you'"
+testSyntax = "@found 'You'"
 
 jsEnv = require('jsdom').env
-containerDocument = '<html><body></body></html>'
 
+containerDocument = "<html><body><script type='text/jumly+sequence'>#{testSyntax}</script></body></html>"
 jsEnv containerDocument, (errors, window) ->
         core = require "./core"
         api = require "./api"
         
         global.jQuery = global.$ = require('jquery')(window)
+        global.document = window.document
 
-        d = JUMLY._compile(testSyntax)
-        console.log d.html()
+        JUMLY.scan()
+        # jQuery hack to get outerHtml
+        diagram = ($('<div/>').append $(".diagram"))
+
+        jumlyInclude = "<link href='http://jumly.tmtk.net/release/jumly.min.css' rel='stylesheet'/>" +
+                "<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>" +
+                "<script src='http://coffeescript.org/extras/coffee-script.js'></script>" +
+                "<script src='http://jumly.tmtk.net/release/jumly.min.js'></script>"
+        console.log "<html><head>#{jumlyInclude}</head><body>#{diagram.html()}</body></html>"
