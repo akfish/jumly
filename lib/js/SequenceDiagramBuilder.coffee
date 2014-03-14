@@ -1,4 +1,5 @@
-self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
+self = require: JUMLY.require
+
 core = self.require "core"
 DiagramBuilder = self.require "DiagramBuilder"
 SequenceDiagram = self.require "SequenceDiagram"

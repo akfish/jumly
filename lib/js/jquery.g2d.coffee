@@ -19,7 +19,7 @@ to_polar_from_cartesian = (src, dst)->
     quadrants  :
         x: if dx != 0 then dx/Math.abs(dx) else 1
         y: if dy != 0 then dy/Math.abs(dy) else 1
-self = require: if (typeof module != 'undefined' and typeof module.exports != 'undefined') then require else JUMLY.require
+self = require: JUMLY.require
 
 SVG_NS = "http://www.w3.org/2000/svg"
 
